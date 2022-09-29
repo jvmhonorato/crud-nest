@@ -17,3 +17,13 @@ START REST API NEST JS
 8: importar o product.service em product.module.ts como providers:[ProductService]
 
 9: chamar o productService dentro da função  ProductControllers como a mesma está em providers era rodará
+
+PROVIDERS 
+
+10: criar em SRC database/mysql.provider
+
+11: adicionar o MySQLProvider em modules/product.module.ts em providers
+
+12: EM product.service.ts add o contrutor pra injeta a dependencia mysql: "constructor(private readonly mysql: MySQLProvider){}"
+
+13: inserir test 
