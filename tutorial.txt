@@ -1,0 +1,4 @@
+1:  npm i -g @nestjs/cli
+2: nest new project-name
+3: add em prettierrc "semi":false pra remover o ";" dos arquivos
+4:
