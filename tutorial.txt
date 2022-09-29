@@ -1,4 +1,19 @@
 1:  npm i -g @nestjs/cli
 2: nest new project-name
 3: add em prettierrc "semi":false pra remover o ";" dos arquivos
-4:
+
+START REST API NEST JS
+
+4: criar module/product/product.controller.ts export a class controller e dar um nome ao Controller products que é a ROTA
+
+5: Criar dentro de SRC module/product/product.module.ts importar product.controller.ts e  e export o ProductModule
+
+
+
+6:em app.module.ts importar o productModule
+
+7: criar module/product/product.service.ts
+
+8: importar o product.service em product.module.ts como providers:[ProductService]
+
+9: chamar o productService dentro da função  ProductControllers como a mesma está em providers era rodará
