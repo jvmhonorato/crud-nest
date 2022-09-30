@@ -39,4 +39,10 @@ ADD MySQL
 17: deixar o o getValue() async passando a Promise<string> em seguida chamando o getConnection(), em seguida estanciar uma query sql e chamar
 no vavegador pra ver se retornar
 
-18: criar database.module.ts que será responsável por
+18: criar database.module.ts que será responsável por servir de modelo
+
+19: criar module/product/product.entity.ts que é uma entidade que representa uma classe que foi pro banco, nela usando o findAll() pra buscar todos os dados do banco de dados. OBS: passar os dados chamdos do DB por JSON pra que possam ser interpretados pelo navegador EX:
+        const [results] = await conn.query('select * from products')
+        const resultsPlain = JSON.parse(JSON.stringify(results))
+
+ 20:       
