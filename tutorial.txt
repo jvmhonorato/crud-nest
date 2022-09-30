@@ -41,8 +41,18 @@ no vavegador pra ver se retornar
 
 18: criar database.module.ts que será responsável por servir de modelo
 
-19: criar module/product/product.entity.ts que é uma entidade que representa uma classe que foi pro banco, nela usando o findAll() pra buscar todos os dados do banco de dados. OBS: passar os dados chamdos do DB por JSON pra que possam ser interpretados pelo navegador EX:
+***CRUD***
+
+19: criar module/product/product.entity.ts passando o modelo Product contendo price,  product e id, depois passar exportar pra product.service.ts usando esse model pra puxar os dados do banco sql atravez de um JSON em seguida exportar pra   product.controller.ts  OBS: passar os dados chamdos do DB por JSON em todos os controllers(CRUD) pra que possam ser interpretados pelo navegador EX:
+  product.controller.ts
         const [results] = await conn.query('select * from products')
         const resultsPlain = JSON.parse(JSON.stringify(results))
 
- 20:       
+GET ALL PRODUCT
+
+20:Em product.controller.ts passa a rota findAll() com o @Get() vazio que por padrão é '/', em seguida criar em product.service.ts a lógica usando a query pra buscar os dados no DB em seguida convertendo os dados em JSON, depois fazer um .map() disso retonando a consulta atrela ao product.entity que é o model do dados e por ultimo o return
+
+GET PRODUCT BY ID
+
+
+20: Em product.controller.ts passar a rota findById() com o @Get(':id') passando tambem o @Param tipado pra busacr o produto cujo o id for declarado   na consulta, em seguida em product.service construir a lógica da mesma forma da anterior entretanto mudando um detalhe na query que é deixar o id dinamico passando ele depois: ('select * from products where id = ?', [id])

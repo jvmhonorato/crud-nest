@@ -3,6 +3,8 @@ import { Inject, Injectable } from '@nestjs/common';
 import { MySQLProvider } from 'src/database/mysql.provider';
 import { Product } from './product.entity';
 
+//inject link and models with databank query
+
 @Injectable()
 export class ProductService{
     constructor(@Inject('DATABASE') private readonly mysql: MySQLProvider){}
@@ -10,12 +12,26 @@ export class ProductService{
         const conn = await this.mysql.getConnection()
         const [results] = await conn.query('select * from products')
         const resultsPlain = JSON.parse(JSON.stringify(results))
-       const products = resultsPlain.map(product => {
+        const products = resultsPlain.map(product => {
         const productEntity = new Product()
-         productEntity.product = product.product
-         productEntity.product = product.price
+        productEntity.id = product.id
+        productEntity.product = product.product
+        productEntity.price = product.price
          return productEntity
        })
         return products
+    }
+    async findById(id: string): Promise<Product> {
+        const conn = await this.mysql.getConnection()
+        const [results] = await conn.query('select * from products where id = ?', [id])
+        const resultsPlain = JSON.parse(JSON.stringify(results))
+        const products = resultsPlain.map(product => {
+        const productEntity = new Product()
+         productEntity.id = product.id
+         productEntity.product = product.product
+         productEntity.price = product.price
+         return productEntity
+       })
+        return products[0]
     }
 }
