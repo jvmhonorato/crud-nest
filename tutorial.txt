@@ -27,3 +27,16 @@ PROVIDERS
 12: EM product.service.ts add o contrutor pra injeta a dependencia mysql: "constructor(private readonly mysql: MySQLProvider){}"
 
 13: inserir test 
+
+ADD MySQL 
+
+14: npm install mysql2
+
+15: npm install --save-dev types/mysql2
+
+16: em mysql.provider.ts criar o import do createPool, Pool  depois passar o createPool no constructor
+
+17: deixar o o getValue() async passando a Promise<string> em seguida chamando o getConnection(), em seguida estanciar uma query sql e chamar
+no vavegador pra ver se retornar
+
+18: criar database.module.ts que será responsável por
