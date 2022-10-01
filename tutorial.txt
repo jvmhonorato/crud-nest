@@ -62,3 +62,10 @@ CREATEPRODUCT
 21: Em product.service.ts criar o create com o parãmetro entity: Product, passar a query de criação sql passando o [entity.produt entity.pric] depois da query pra ficar dinamico
 
 22: em seguida em product.controller passar o metodo @Post() e passar a rota create com o parãmetro @Body() Product, em seguida dar o retorn com a função create que esta em product.service com o parmatreo (product) que é o models que esta em entity.product.ts
+
+DELETE PRODUCT
+
+23: EM product.controller criar metodo @Delete(':id') passando o id praq ser declardo dinamicamente, com a função remove(@Param('id')) importada de product.service com o retorno da função remove em product.service.ts
+
+24:
+Em product.controller.ts crai a função remove chamdno a query sql passando tambem o id depois da query pra deixa ela dinamica, em seguida dar um return do tipo bollean: true

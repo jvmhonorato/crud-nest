@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { Inject, Injectable } from '@nestjs/common';
+import { connection } from 'mongoose';
 import { MySQLProvider } from 'src/database/mysql.provider';
 import { Product } from './product.entity';
 
@@ -8,6 +9,7 @@ import { Product } from './product.entity';
 @Injectable()
 export class ProductService{
     constructor(@Inject('DATABASE') private readonly mysql: MySQLProvider){}
+
     async findAll(): Promise<Product[]> {
         const conn = await this.mysql.getConnection()
         const [results] = await conn.query('select * from products')
@@ -40,5 +42,11 @@ export class ProductService{
         await conn.query('insert into products (product, price) values (? , ?)', [entity.product, entity.price,])
 
         return entity
+    }
+
+    async remove(id: string): Promise<boolean>{
+        const conn = await this.mysql.getConnection()
+        await conn.query('delete from products where id = ? limit 1', [id])
+        return true
     }
 }
