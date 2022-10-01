@@ -86,3 +86,9 @@ npm i @nestjs/graphql @nestjs/apollo graphql apollo-server-express
 
 29: importar o  no providers: ProductResolvers   em product.module.ts
 
+MUTATION
+
+30: Em product.resolvers.ts criar @Mutation
+
+31: EM dto criar dto/product.input.ts com @InputType() que será o model de criação do input do create mutation
+

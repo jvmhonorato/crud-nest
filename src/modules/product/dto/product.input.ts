@@ -1,8 +1,8 @@
-import { Field, ObjectType } from "@nestjs/graphql";
+import { Field, InputType,  } from "@nestjs/graphql";
 
 
-@ObjectType()
-export class Product {
+@InputType()
+export class ProductInput {
     @Field({ nullable: true})
     id: number
 

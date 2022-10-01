@@ -3,11 +3,21 @@
 # ------------------------------------------------------
 
 type Product {
-  id: Float!
-  product: String!
-  price: Float!
+  id: Float
+  product: String
+  price: Float
 }
 
 type Query {
   getAllProducts: [Product!]!
+}
+
+type Mutation {
+  createProduct(input: ProductInput!): Product!
+}
+
+input ProductInput {
+  id: Float
+  product: String
+  price: Float
 }
