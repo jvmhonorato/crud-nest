@@ -43,6 +43,8 @@ no vavegador pra ver se retornar
 
 ***CRUD***
 
+REST
+
 19: criar module/product/product.entity.ts passando o modelo Product contendo price,  product e id, depois passar exportar pra product.service.ts usando esse model pra puxar os dados do banco sql atravez de um JSON em seguida exportar pra   product.controller.ts  OBS: passar os dados chamdos do DB por JSON em todos os controllers(CRUD) pra que possam ser interpretados pelo navegador EX:
   product.controller.ts
         const [results] = await conn.query('select * from products')
@@ -69,3 +71,18 @@ DELETE PRODUCT
 
 24:
 Em product.controller.ts crai a função remove chamdno a query sql passando tambem o id depois da query pra deixa ela dinamica, em seguida dar um return do tipo bollean: true
+
+
+GRAPHQL NEST JS
+npm i @nestjs/graphql @nestjs/apollo graphql apollo-server-express
+
+25: npm i @nestjs/graphql graphql-tools graphql apollo-server-express OBS: usar abordagem CODE FIRST
+
+26: em app.module.ts inserir o graphql em @Module imports: deixando 'schema.gql' na raiz
+
+27: criar em product dto/product.ts que será o Model de tipagem do crud do graphQL
+
+28: criar em module/product/product.resolver.ts que assim como o controller em REST ele traça as rotas que vem de product .service.ts usando o dto.product.ts como model ele busaca os dados do banco de dados pra tel ao estiilo graphql
+
+29: importar o  no providers: ProductResolvers   em product.module.ts
+
