@@ -34,4 +34,11 @@ export class ProductService{
        })
         return products[0]
     }
+
+    async create(entity: Product): Promise<Product> {
+        const conn = await this.mysql.getConnection()
+        await conn.query('insert into products (product, price) values (? , ?)', [entity.product, entity.price,])
+
+        return entity
+    }
 }
